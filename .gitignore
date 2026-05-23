@@ -1,4 +1,4 @@
 *.html
-!html/*.html
+!docs/*.html
 *.el
 .DS_Store
