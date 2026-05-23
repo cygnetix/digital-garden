@@ -1,0 +1,15 @@
+#+TITLE: Emacs
+* Overview
+What more is there to be said?
+
+* Version Control
+The built-in =vc= module can be used to manage a git project directly from within Emacs. My personal needs for managing =git= are pretty simple, so I don't feel the need to use the more popular =magit= package.
+
+** Staging, committing and pushing
+This is a common seqence of operations that you'll do all the time when working on code using =git=. Here's the Emacs equivalent of the process.
+
+- =C-x v d= :: Brings up the equivalent of running ~git status~ and shows which files have changed. Using =m= to _mark_ files or =u= to _unmark_ file, the same as you would in =dired= selects what you want to stage for commit.
+- =C-x v v= :: Prompts for a commit message. Hitting the same sequence then does the equivalent of ~git commit -m 'message goes here'~ and files are now commited to the branch.
+- =C-x v P= :: Finally, this will ~git push~ the file back to the =origin= where, in the case of Github, you can then create a pull request.
+
+* Avy

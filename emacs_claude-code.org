@@ -1,0 +1,30 @@
+#+TITLE: Claude Code Emacs Config
+
+* Overview
+This config integrates the Claude CLI tool directly into Emacs so it can be quickly called.
+
+* Keybindings
+- ~C-c c c~ :: Start Claude Code.
+- ~C-c c m~ :: Open the transient menu.
+- ~C-c c M~ :: Cycle through modes.
+
+* Installation
+Claude Code requires a terminal, which doesn't ship with Emacs out of the box. There's a few options, but here I'm choosing to install the =eat= package as it's a modern elisp-native terminal.
+#+begin_src elisp
+  (use-package eat
+    :ensure t)
+#+end_src
+
+Another external package, =inheritenv=, is also a required dependency.
+#+begin_src elisp
+  (use-package inheritenv
+    :vc (:url "https://github.com/purcell/inheritenv" :rev :newest))
+#+end_src
+
+Now =claude-code= can now be installed and confgured. Just note that this repo seems to be big and Emacs will freeze for about 5 minutes while it downloads and compiles the package.
+#+begin_src elisp
+  (use-package claude-code :ensure t
+    :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
+    :bind-keymap ("C-c c" . claude-code-command-map)
+    :bind (:repeat-map my-claude-code-map ("M" . claude-code-cycle-mode)))
+#+end_src

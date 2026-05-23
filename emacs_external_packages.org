@@ -1,0 +1,13 @@
+#+TITLE: Emacs External Packages
+
+* Overview
+
+* Keybindings
+- =C-s-j= :: Jump to a charactor within the visible buffer.
+
+* Avy
+#+begin_src elisp
+  (use-package avy
+    :ensure t
+    :bind (("C-s-j" . avy-goto-char)))
+#+end_src

@@ -1,0 +1,25 @@
+#+TITLE: Digital Garden
+
+* Welcome
+This, my friends, is a very minimalistic [[https://maggieappleton.com/garden-history][digital garden]], created using [[https://www.gnu.org/software/emacs/][Emacs]]. Put another way; it's a living breathing mess of my personal notes and configuration files published to the internet for the world to see.
+
+* Capture the flag
+- [[https://cyberdefenders.org/blueteam-ctf-challenges/hammered/][Hammered]] :: A CTF with a focus on Linux log files for the forensic artefacts. This seemed like a good way to learn more about digging through logs using a SIEM.
+
+* Learning Adventures
+- [[file:emacs.org][Emacs]] :: This digital garden is all writen exclusively in Emacs, but it's a journey I'm only just beginning and hope to document my learnings as I go along.
+
+* Software Development
+- [[file:git.org][Git Cheetsheet]] :: Commonly used commands for handling =git= when things go sideways.
+
+* Config Files
+Emacs is a highly customisable editor, so there's lot of setup that goes into defining the perfect workflow. What follows is 100% of my own Emacs configuration. I tend to try and use the build-in packages as much as possible, but some external dependencies are unavoidable.
+
+- [[file:emacs_base_packages.org][Emacs Base]] :: A very basic emacs configuration that I use with miniaml external dependencies. The goal is to have an environment that's fast and uses many of the excllent default packages that now ship with modern releases of emacs.
+- [[file:emacs_external_packages.org][Emacs External]] :: These are external packages installed through MELPA. I like to distinish these from config used for packages that are provided out of the box.
+- [[file:emacs_claude-code.org][Claude Code]] :: Making Claude and Emacs play nice together. I realise the value in having Claude at your finger tips, integrated seamlessly straight into Emacs.
+- [[file:emacs_golang.org][Go]] :: Golang is my prefered language for when I want to write something that's both robust and easily shared with others. It strikes a great balance between performance and simplicity while having many modern features built-in.
+
+* Socials
+- [[https://infosec.exchange/@cygnetix][Mastodon]] :: I like the quiet pace of the Fediverse.
+- [[https://github.com/cygnetix][Github]] :: The home of this digital garden.

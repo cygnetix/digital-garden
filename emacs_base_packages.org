@@ -1,0 +1,98 @@
+#+TITLE: Emacs Base Packages
+
+* Overview
+This is my basic Emacs configuration. It uses only built-in packages and keeps things lean and fast.
+
+* Keybindings
+#+begin_src elisp
+  (global-set-key (kbd "C-c p") #'org-publish-project)
+#+end_src
+
+* Minibuffer
+Fido is a built-in modern alternative to the default mini-buffer. This works similar to helm and vertico but is built-in to Emacs.
+
+#+begin_src elisp
+  (fido-mode 1)
+  (fido-vertical-mode t)
+#+end_src
+
+* Theme and UI
+I use the built-in =modus-vivendi= theme as well as removing some of the default UI features and disabling the bell.
+
+#+begin_src elisp
+  (load-theme 'modus-vivendi)
+  (set-face-attribute 'default nil :family "Fira Code" :height 150)
+
+  (global-visual-line-mode t)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+
+  (setq ring-bell-function 'ignore)
+#+end_src
+
+* Backup Files
+Change where emacs creates temporary and backup files.
+
+#+begin_src elisp
+  (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+  (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
+#+end_src
+
+* Org Mode
+I include a lot of snippets in my Org files. The ~org-tempo~ packages lets me simply write =<s= and hit tab to insert a new code block.
+
+#+begin_src elisp
+  (require 'org-tempo)
+  (add-to-list 'org-structure-template-alist
+  	     '("py" . "src python"))
+#+end_src
+
+When publishing HTML, I want to keep it under a seperate folder and to set the author name.
+#+begin_src elisp
+  (setq user-full-name "cygnetix")
+
+  (setq org-publish-project-alist
+        '(("digital-garden"
+        	 :base-directory "~/digital-garden/"
+        	 :publishing-directory "~/digital-garden/html/"
+        	 :publishing-function org-html-publish-to-html)))
+
+  (setq org-html-htmlize-output-type nil)
+  (setq org-export-with-section-numbers nil)
+
+  (setq org-html-preamble t)
+  (setq org-html-preamble-format
+        '(("en" "<nav class=\"navbar\"><a href=\"home.html\" class=\"home-btn\">Home</a></nav>")))
+
+  (setq org-html-postamble t)
+  (setq org-html-postamble-format
+        '(("en" "<footer><p>Created with <a href=\"https://orgmode.org/\">Org-mode</a></p></footer>")))
+
+  (setq org-html-head-include-default-style t)
+  (setq org-html-head "<link rel=\"stylesheet\" href=\"css/style.css\" type=\"text/css\">")
+#+end_src
+
+I use a programmable keyboard and have my cursor keys mapped to the home row, so some of Orgs keymappings hijack these in a way that's problematic for my setup.
+#+begin_src elisp
+  (with-eval-after-load 'org
+    (define-key org-mode-map (kbd "M-<left>") nil)    ; org-metaleft
+    (define-key org-mode-map (kbd "M-<right>") nil))  ; org-metaright
+#+end_src
+
+* EShell
+It's useful to create short aliases in eshell for commonly run commands.
+
+#+begin_src elisp
+  (defun eshell/ff (&rest args)
+    "Alias for find-file in eshell."
+    (dolist (file args)
+      (find-file file)))
+#+end_src
+
+* External Packages
+#+begin_src elisp
+  (org-babel-load-file (expand-file-name "~/digital-garden/emacs_external_packages.org"))
+  (org-babel-load-file (expand-file-name "~/digital-garden/emacs_claude-code.org"))
+  (org-babel-load-file (expand-file-name "~/digital-garden/emacs_golang.org"))
+#+end_src

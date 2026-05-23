@@ -1,0 +1,5 @@
+#+TITLE: Go Emacs Package Config
+
+#+begin_src elisp
+  (message "todo")
+#+end_src
