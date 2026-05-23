@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-23 Sat 16:52 -->
+<!-- 2026-05-23 Sat 16:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Emacs Base Packages</title>
+<title>Digital Garden</title>
 <meta name="author" content="cygnetix" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -200,166 +200,74 @@
 <nav class="navbar"><a href="home.html" class="home-btn">Home</a></nav>
 </div>
 <div id="content" class="content">
-<h1 class="title">Emacs Base Packages</h1>
+<h1 class="title">Digital Garden</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2f08672">Overview</a></li>
-<li><a href="#org2e029e9">Keybindings</a></li>
-<li><a href="#org2696a27">Minibuffer</a></li>
-<li><a href="#org4a4dea8">Theme and UI</a></li>
-<li><a href="#org3fb6ea4">Backup Files</a></li>
-<li><a href="#org4507aa5">Org Mode</a></li>
-<li><a href="#org70981e2">EShell</a></li>
-<li><a href="#org3578ea4">External Packages</a></li>
+<li><a href="#org923f2b2">Welcome</a></li>
+<li><a href="#orgfd46e2c">Capture the flag</a></li>
+<li><a href="#org43e9b3d">Learning Adventures</a></li>
+<li><a href="#org6ddaad3">Software Development</a></li>
+<li><a href="#orgbd6e43d">Config Files</a></li>
+<li><a href="#org7f4cf76">Socials</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2f08672" class="outline-2">
-<h2 id="org2f08672">Overview</h2>
-<div class="outline-text-2" id="text-org2f08672">
+<div id="outline-container-org923f2b2" class="outline-2">
+<h2 id="org923f2b2">Welcome</h2>
+<div class="outline-text-2" id="text-org923f2b2">
 <p>
-This is my basic Emacs configuration. It uses only built-in packages and keeps things lean and fast.
+This, my friends, is a very minimalistic <a href="https://maggieappleton.com/garden-history">digital garden</a>, created using <a href="https://www.gnu.org/software/emacs/">Emacs</a>. Put another way; it's a living breathing mess of my personal notes and configuration files published to the internet for the world to see.
 </p>
 </div>
 </div>
-<div id="outline-container-org2e029e9" class="outline-2">
-<h2 id="org2e029e9">Keybindings</h2>
-<div class="outline-text-2" id="text-org2e029e9">
-<div class="org-src-container">
-<pre class="src src-elisp">(global-set-key (kbd "C-c p") #'org-publish-project)
-</pre>
+<div id="outline-container-orgfd46e2c" class="outline-2">
+<h2 id="orgfd46e2c">Capture the flag</h2>
+<div class="outline-text-2" id="text-orgfd46e2c">
+<dl class="org-dl">
+<dt><a href="https://cyberdefenders.org/blueteam-ctf-challenges/hammered/">Hammered</a></dt><dd>A CTF with a focus on Linux log files for the forensic artefacts. This seemed like a good way to learn more about digging through logs using a SIEM.</dd>
+</dl>
 </div>
 </div>
+<div id="outline-container-org43e9b3d" class="outline-2">
+<h2 id="org43e9b3d">Learning Adventures</h2>
+<div class="outline-text-2" id="text-org43e9b3d">
+<dl class="org-dl">
+<dt><a href="emacs.html">Emacs</a></dt><dd>This digital garden is all writen exclusively in Emacs, but it's a journey I'm only just beginning and hope to document my learnings as I go along.</dd>
+</dl>
 </div>
-<div id="outline-container-org2696a27" class="outline-2">
-<h2 id="org2696a27">Minibuffer</h2>
-<div class="outline-text-2" id="text-org2696a27">
+</div>
+<div id="outline-container-org6ddaad3" class="outline-2">
+<h2 id="org6ddaad3">Software Development</h2>
+<div class="outline-text-2" id="text-org6ddaad3">
+<dl class="org-dl">
+<dt><a href="git.html">Git Cheetsheet</a></dt><dd>Commonly used commands for handling <code>git</code> when things go sideways.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgbd6e43d" class="outline-2">
+<h2 id="orgbd6e43d">Config Files</h2>
+<div class="outline-text-2" id="text-orgbd6e43d">
 <p>
-Fido is a built-in modern alternative to the default mini-buffer. This works similar to helm and vertico but is built-in to Emacs.
+Emacs is a highly customisable editor, so there's lot of setup that goes into defining the perfect workflow. What follows is 100% of my own Emacs configuration. I tend to try and use the build-in packages as much as possible, but some external dependencies are unavoidable.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-elisp">(fido-mode 1)
-(fido-vertical-mode t)
-</pre>
+<dl class="org-dl">
+<dt><a href="emacs_base_packages.html">Emacs Base</a></dt><dd>A very basic emacs configuration that I use with miniaml external dependencies. The goal is to have an environment that's fast and uses many of the excllent default packages that now ship with modern releases of emacs.</dd>
+<dt><a href="emacs_external_packages.html">Emacs External</a></dt><dd>These are external packages installed through MELPA. I like to distinish these from config used for packages that are provided out of the box.</dd>
+<dt><a href="emacs_claude-code.html">Claude Code</a></dt><dd>Making Claude and Emacs play nice together. I realise the value in having Claude at your finger tips, integrated seamlessly straight into Emacs.</dd>
+<dt><a href="emacs_golang.html">Go</a></dt><dd>Golang is my prefered language for when I want to write something that's both robust and easily shared with others. It strikes a great balance between performance and simplicity while having many modern features built-in.</dd>
+</dl>
 </div>
 </div>
-</div>
-<div id="outline-container-org4a4dea8" class="outline-2">
-<h2 id="org4a4dea8">Theme and UI</h2>
-<div class="outline-text-2" id="text-org4a4dea8">
-<p>
-I use the built-in <code>modus-vivendi</code> theme as well as removing some of the default UI features and disabling the bell.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(load-theme 'modus-vivendi)
-(set-face-attribute 'default nil :family "Fira Code" :height 150)
-
-(global-visual-line-mode t)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-
-(setq ring-bell-function 'ignore)
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org3fb6ea4" class="outline-2">
-<h2 id="org3fb6ea4">Backup Files</h2>
-<div class="outline-text-2" id="text-org3fb6ea4">
-<p>
-Change where emacs creates temporary and backup files.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org4507aa5" class="outline-2">
-<h2 id="org4507aa5">Org Mode</h2>
-<div class="outline-text-2" id="text-org4507aa5">
-<p>
-I include a lot of snippets in my Org files. The <code>org-tempo</code> packages lets me simply write <code>&lt;s</code> and hit tab to insert a new code block.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(require 'org-tempo)
-(add-to-list 'org-structure-template-alist
-             '("py" . "src python"))
-</pre>
-</div>
-
-<p>
-When publishing HTML, I want to keep it under a seperate folder and to set the author name.
-</p>
-<div class="org-src-container">
-<pre class="src src-elisp">(setq user-full-name "cygnetix")
-
-(setq org-publish-project-alist
-      '(("digital-garden"
-         :base-directory "~/digital-garden/"
-         :publishing-directory "~/digital-garden/html/"
-         :publishing-function org-html-publish-to-html)))
-
-(setq org-html-htmlize-output-type nil)
-(setq org-export-with-section-numbers nil)
-
-(setq org-html-preamble t)
-(setq org-html-preamble-format
-      '(("en" "&lt;nav class=\"navbar\"&gt;&lt;a href=\"home.html\" class=\"home-btn\"&gt;Home&lt;/a&gt;&lt;/nav&gt;")))
-
-(setq org-html-postamble t)
-(setq org-html-postamble-format
-      '(("en" "&lt;footer&gt;&lt;p&gt;Created with &lt;a href=\"https://orgmode.org/\"&gt;Org-mode&lt;/a&gt;&lt;/p&gt;&lt;/footer&gt;")))
-
-(setq org-html-head-include-default-style t)
-(setq org-html-head "&lt;link rel=\"stylesheet\" href=\"css/style.css\" type=\"text/css\"&gt;")
-</pre>
-</div>
-
-<p>
-I use a programmable keyboard and have my cursor keys mapped to the home row, so some of Orgs keymappings hijack these in a way that's problematic for my setup.
-</p>
-<div class="org-src-container">
-<pre class="src src-elisp">(with-eval-after-load 'org
-  (define-key org-mode-map (kbd "M-&lt;left&gt;") nil)    ; org-metaleft
-  (define-key org-mode-map (kbd "M-&lt;right&gt;") nil))  ; org-metaright
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org70981e2" class="outline-2">
-<h2 id="org70981e2">EShell</h2>
-<div class="outline-text-2" id="text-org70981e2">
-<p>
-It's useful to create short aliases in eshell for commonly run commands.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(defun eshell/ff (&amp;rest args)
-  "Alias for find-file in eshell."
-  (dolist (file args)
-    (find-file file)))
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org3578ea4" class="outline-2">
-<h2 id="org3578ea4">External Packages</h2>
-<div class="outline-text-2" id="text-org3578ea4">
-<div class="org-src-container">
-<pre class="src src-elisp">(org-babel-load-file (expand-file-name "~/digital-garden/emacs_external_packages.org"))
-(org-babel-load-file (expand-file-name "~/digital-garden/emacs_claude-code.org"))
-(org-babel-load-file (expand-file-name "~/digital-garden/emacs_golang.org"))
-</pre>
-</div>
+<div id="outline-container-org7f4cf76" class="outline-2">
+<h2 id="org7f4cf76">Socials</h2>
+<div class="outline-text-2" id="text-org7f4cf76">
+<dl class="org-dl">
+<dt><a href="https://infosec.exchange/@cygnetix">Mastodon</a></dt><dd>I like the quiet pace of the Fediverse.</dd>
+<dt><a href="https://github.com/cygnetix">Github</a></dt><dd>The home of this digital garden.</dd>
+</dl>
 </div>
 </div>
 </div>

@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-23 Sat 16:52 -->
+<!-- 2026-05-23 Sat 16:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Emacs Base Packages</title>
+<title>Go Emacs Package Config</title>
 <meta name="author" content="cygnetix" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -200,167 +200,10 @@
 <nav class="navbar"><a href="home.html" class="home-btn">Home</a></nav>
 </div>
 <div id="content" class="content">
-<h1 class="title">Emacs Base Packages</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org2f08672">Overview</a></li>
-<li><a href="#org2e029e9">Keybindings</a></li>
-<li><a href="#org2696a27">Minibuffer</a></li>
-<li><a href="#org4a4dea8">Theme and UI</a></li>
-<li><a href="#org3fb6ea4">Backup Files</a></li>
-<li><a href="#org4507aa5">Org Mode</a></li>
-<li><a href="#org70981e2">EShell</a></li>
-<li><a href="#org3578ea4">External Packages</a></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org2f08672" class="outline-2">
-<h2 id="org2f08672">Overview</h2>
-<div class="outline-text-2" id="text-org2f08672">
-<p>
-This is my basic Emacs configuration. It uses only built-in packages and keeps things lean and fast.
-</p>
-</div>
-</div>
-<div id="outline-container-org2e029e9" class="outline-2">
-<h2 id="org2e029e9">Keybindings</h2>
-<div class="outline-text-2" id="text-org2e029e9">
+<h1 class="title">Go Emacs Package Config</h1>
 <div class="org-src-container">
-<pre class="src src-elisp">(global-set-key (kbd "C-c p") #'org-publish-project)
+<pre class="src src-elisp">(message "todo")
 </pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org2696a27" class="outline-2">
-<h2 id="org2696a27">Minibuffer</h2>
-<div class="outline-text-2" id="text-org2696a27">
-<p>
-Fido is a built-in modern alternative to the default mini-buffer. This works similar to helm and vertico but is built-in to Emacs.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(fido-mode 1)
-(fido-vertical-mode t)
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org4a4dea8" class="outline-2">
-<h2 id="org4a4dea8">Theme and UI</h2>
-<div class="outline-text-2" id="text-org4a4dea8">
-<p>
-I use the built-in <code>modus-vivendi</code> theme as well as removing some of the default UI features and disabling the bell.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(load-theme 'modus-vivendi)
-(set-face-attribute 'default nil :family "Fira Code" :height 150)
-
-(global-visual-line-mode t)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-
-(setq ring-bell-function 'ignore)
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org3fb6ea4" class="outline-2">
-<h2 id="org3fb6ea4">Backup Files</h2>
-<div class="outline-text-2" id="text-org3fb6ea4">
-<p>
-Change where emacs creates temporary and backup files.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org4507aa5" class="outline-2">
-<h2 id="org4507aa5">Org Mode</h2>
-<div class="outline-text-2" id="text-org4507aa5">
-<p>
-I include a lot of snippets in my Org files. The <code>org-tempo</code> packages lets me simply write <code>&lt;s</code> and hit tab to insert a new code block.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(require 'org-tempo)
-(add-to-list 'org-structure-template-alist
-             '("py" . "src python"))
-</pre>
-</div>
-
-<p>
-When publishing HTML, I want to keep it under a seperate folder and to set the author name.
-</p>
-<div class="org-src-container">
-<pre class="src src-elisp">(setq user-full-name "cygnetix")
-
-(setq org-publish-project-alist
-      '(("digital-garden"
-         :base-directory "~/digital-garden/"
-         :publishing-directory "~/digital-garden/html/"
-         :publishing-function org-html-publish-to-html)))
-
-(setq org-html-htmlize-output-type nil)
-(setq org-export-with-section-numbers nil)
-
-(setq org-html-preamble t)
-(setq org-html-preamble-format
-      '(("en" "&lt;nav class=\"navbar\"&gt;&lt;a href=\"home.html\" class=\"home-btn\"&gt;Home&lt;/a&gt;&lt;/nav&gt;")))
-
-(setq org-html-postamble t)
-(setq org-html-postamble-format
-      '(("en" "&lt;footer&gt;&lt;p&gt;Created with &lt;a href=\"https://orgmode.org/\"&gt;Org-mode&lt;/a&gt;&lt;/p&gt;&lt;/footer&gt;")))
-
-(setq org-html-head-include-default-style t)
-(setq org-html-head "&lt;link rel=\"stylesheet\" href=\"css/style.css\" type=\"text/css\"&gt;")
-</pre>
-</div>
-
-<p>
-I use a programmable keyboard and have my cursor keys mapped to the home row, so some of Orgs keymappings hijack these in a way that's problematic for my setup.
-</p>
-<div class="org-src-container">
-<pre class="src src-elisp">(with-eval-after-load 'org
-  (define-key org-mode-map (kbd "M-&lt;left&gt;") nil)    ; org-metaleft
-  (define-key org-mode-map (kbd "M-&lt;right&gt;") nil))  ; org-metaright
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org70981e2" class="outline-2">
-<h2 id="org70981e2">EShell</h2>
-<div class="outline-text-2" id="text-org70981e2">
-<p>
-It's useful to create short aliases in eshell for commonly run commands.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(defun eshell/ff (&amp;rest args)
-  "Alias for find-file in eshell."
-  (dolist (file args)
-    (find-file file)))
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org3578ea4" class="outline-2">
-<h2 id="org3578ea4">External Packages</h2>
-<div class="outline-text-2" id="text-org3578ea4">
-<div class="org-src-container">
-<pre class="src src-elisp">(org-babel-load-file (expand-file-name "~/digital-garden/emacs_external_packages.org"))
-(org-babel-load-file (expand-file-name "~/digital-garden/emacs_claude-code.org"))
-(org-babel-load-file (expand-file-name "~/digital-garden/emacs_golang.org"))
-</pre>
-</div>
-</div>
 </div>
 </div>
 <div id="postamble" class="status">
