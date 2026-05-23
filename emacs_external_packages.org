@@ -11,3 +11,14 @@
     :ensure t
     :bind (("C-s-j" . avy-goto-char)))
 #+end_src
+
+* Eat
+#+begin_src elisp
+  (use-package eat
+    :ensure t
+    :config
+    (setq eat-kill-buffer-on-exit t)
+    (add-hook 'eat-mode-hook
+              (lambda ()
+                (buffer-face-set '(:family "Fira Code" :height 150)))))
+#+end_src

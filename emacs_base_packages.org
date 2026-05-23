@@ -93,6 +93,5 @@ It's useful to create short aliases in eshell for commonly run commands.
 * External Packages
 #+begin_src elisp
   (org-babel-load-file (expand-file-name "~/digital-garden/emacs_external_packages.org"))
-  (org-babel-load-file (expand-file-name "~/digital-garden/emacs_claude-code.org"))
   (org-babel-load-file (expand-file-name "~/digital-garden/emacs_golang.org"))
 #+end_src

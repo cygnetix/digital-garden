@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-23 Sat 18:46 -->
+<!-- 2026-05-23 Sat 19:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Claude Code Emacs Config</title>
@@ -208,6 +208,8 @@
 <li><a href="#orgd1d6d7c">Overview</a></li>
 <li><a href="#orgc949679">Keybindings</a></li>
 <li><a href="#orge9d81fb">Installation</a></li>
+<li><a href="#org31479df">Settings</a></li>
+<li><a href="#org032575b">Agent Shell</a></li>
 </ul>
 </div>
 </div>
@@ -258,6 +260,43 @@ Now <code>claude-code</code> can now be installed and confgured. Just note that 
   :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
   :bind-keymap ("C-c c" . claude-code-command-map)
   :bind (:repeat-map my-claude-code-map ("M" . claude-code-cycle-mode)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org31479df" class="outline-2">
+<h2 id="org31479df">Settings</h2>
+<div class="outline-text-2" id="text-org31479df">
+<p>
+I found that even though <code>eat</code> had the correct path for <code>claude</code>, <code>claude-code</code> was still unable to run without the following settings.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(setq claude-code-program "/opt/homebrew/bin/claude")
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org032575b" class="outline-2">
+<h2 id="org032575b">Agent Shell</h2>
+<div class="outline-text-2" id="text-org032575b">
+<div class="org-src-container">
+<pre class="src src-elisp">(use-package acp
+  :ensure t
+  :vc (:url "https://github.com/xenodium/acp.el" :rev :newest))
+
+(use-package shell-maker
+  :ensure t
+  :vc (:url "https://github.com/xenodium/shell-maker" :rev :newest))
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(use-package agent-shell
+  :ensure t
+  :vc (:url "https://github.com/xenodium/agent-shell" :rev :newest)
+  :ensure-system-package
+  ((claude . "brew install claude-code")
+   (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp")))
 </pre>
 </div>
 </div>
