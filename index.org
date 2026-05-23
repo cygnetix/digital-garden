@@ -13,7 +13,7 @@ This, my friends, is a very minimalistic [[https://maggieappleton.com/garden-his
 - [[file:git.org][Git Cheetsheet]] :: Commonly used commands for handling =git= when things go sideways.
 
 * Config Files
-Emacs is a highly customisable editor, so there's lot of setup that goes into defining the perfect workflow. What follows is 100% of my own Emacs configuration. I tend to try and use the build-in packages as much as possible, but some external dependencies are unavoidable.
+Emacs is a highly customisable editor, so there's lot of setup that goes into defining the perfect workflow. What follows is my own Emacs configuration. I tend to try and stick to just the built-in packages, as much as possible, but some external dependencies are unavoidable.
 
 - [[file:emacs_base_packages.org][Emacs Base]] :: A very basic emacs configuration that I use with miniaml external dependencies. The goal is to have an environment that's fast and uses many of the excllent default packages that now ship with modern releases of emacs.
 - [[file:emacs_external_packages.org][Emacs External]] :: These are external packages installed through MELPA. I like to distinish these from config used for packages that are provided out of the box.
