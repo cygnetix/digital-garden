@@ -55,7 +55,7 @@ When publishing HTML, I want to keep it under a seperate folder and to set the a
   (setq org-publish-project-alist
         '(("digital-garden"
         	 :base-directory "~/digital-garden/"
-        	 :publishing-directory "~/digital-garden/html/"
+        	 :publishing-directory "~/digital-garden/docs"
         	 :publishing-function org-html-publish-to-html)))
 
   (setq org-html-htmlize-output-type nil)
