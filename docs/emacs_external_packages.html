@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-23 Sat 19:52 -->
+<!-- 2026-05-23 Sat 20:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs External Packages</title>
@@ -208,6 +208,7 @@
 <li><a href="#org84b3271">Overview</a></li>
 <li><a href="#orgccedcfc">Keybindings</a></li>
 <li><a href="#orgfb6f74f">Avy</a></li>
+<li><a href="#org2e6a7b4">Eat</a></li>
 </ul>
 </div>
 </div>
@@ -230,6 +231,21 @@
 <pre class="src src-elisp">(use-package avy
   :ensure t
   :bind (("C-s-j" . avy-goto-char)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2e6a7b4" class="outline-2">
+<h2 id="org2e6a7b4">Eat</h2>
+<div class="outline-text-2" id="text-org2e6a7b4">
+<div class="org-src-container">
+<pre class="src src-elisp">(use-package eat
+  :ensure t
+  :config
+  (setq eat-kill-buffer-on-exit t)
+  (add-hook 'eat-mode-hook
+            (lambda ()
+              (buffer-face-set '(:family "Fira Code" :height 150)))))
 </pre>
 </div>
 </div>

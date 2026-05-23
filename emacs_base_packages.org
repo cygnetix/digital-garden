@@ -63,7 +63,7 @@ When publishing HTML, I want to keep it under a seperate folder and to set the a
 
   (setq org-html-preamble t)
   (setq org-html-preamble-format
-        '(("en" "<nav class=\"navbar\"><a href=\"home.html\" class=\"home-btn\">Home</a></nav>")))
+        '(("en" "<nav class=\"navbar\"><a href=\"index.html\" class=\"home-btn\">Home</a></nav>")))
 
   (setq org-html-postamble t)
   (setq org-html-postamble-format

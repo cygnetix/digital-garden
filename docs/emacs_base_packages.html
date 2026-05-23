@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-23 Sat 19:52 -->
+<!-- 2026-05-23 Sat 20:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Base Packages</title>
@@ -313,7 +313,7 @@ When publishing HTML, I want to keep it under a seperate folder and to set the a
 
 (setq org-html-preamble t)
 (setq org-html-preamble-format
-      '(("en" "&lt;nav class=\"navbar\"&gt;&lt;a href=\"home.html\" class=\"home-btn\"&gt;Home&lt;/a&gt;&lt;/nav&gt;")))
+      '(("en" "&lt;nav class=\"navbar\"&gt;&lt;a href=\"index.html\" class=\"home-btn\"&gt;Home&lt;/a&gt;&lt;/nav&gt;")))
 
 (setq org-html-postamble t)
 (setq org-html-postamble-format
@@ -356,7 +356,6 @@ It's useful to create short aliases in eshell for commonly run commands.
 <div class="outline-text-2" id="text-org3578ea4">
 <div class="org-src-container">
 <pre class="src src-elisp">(org-babel-load-file (expand-file-name "~/digital-garden/emacs_external_packages.org"))
-(org-babel-load-file (expand-file-name "~/digital-garden/emacs_claude-code.org"))
 (org-babel-load-file (expand-file-name "~/digital-garden/emacs_golang.org"))
 </pre>
 </div>
