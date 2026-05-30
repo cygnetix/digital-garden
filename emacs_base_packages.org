@@ -1,4 +1,6 @@
 #+TITLE: Emacs Base Packages
+#+STARTUP: overview
+#+PROPERTY: header-args :results silent
 
 * Overview
 This is my basic Emacs configuration. It uses only built-in packages and keeps things lean and fast.
@@ -20,8 +22,7 @@ Fido is a built-in modern alternative to the default mini-buffer. This works sim
 I use the built-in =modus-vivendi= theme as well as removing some of the default UI features and disabling the bell.
 
 #+begin_src elisp
-  (load-theme 'modus-vivendi)
-  (set-face-attribute 'default nil :family "Fira Code" :height 150)
+  (load-theme 'wombat)
 
   (global-visual-line-mode t)
   (scroll-bar-mode -1)
@@ -29,6 +30,7 @@ I use the built-in =modus-vivendi= theme as well as removing some of the default
   (menu-bar-mode -1)
 
   (setq ring-bell-function 'ignore)
+  (add-hook 'emacs-startup-hook #'toggle-frame-maximized)
 #+end_src
 
 * Backup Files
@@ -46,6 +48,23 @@ I include a lot of snippets in my Org files. The ~org-tempo~ packages lets me si
   (require 'org-tempo)
   (add-to-list 'org-structure-template-alist
   	     '("py" . "src python"))
+#+end_src
+
+Add support for shell commands to be run from org files.
+#+begin_src elisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((shell . t)))
+#+end_src
+
+Change the font for org-mode to something a little easier on the eyes.
+#+begin_src elisp
+  (add-hook 'org-mode-hook
+  	  (lambda ()
+  	    (face-remap-add-relative 'default :family "Fira Code" :height 150)
+  	    (face-remap-add-relative 'org-code :family "monospace" :height 150)
+  	    (face-remap-add-relative 'org-block :family "monospace" :height 120)
+  	    (face-remap-add-relative 'org-verbatim :family "monospace" :height 150)))
 #+end_src
 
 When publishing HTML, I want to keep it under a seperate folder and to set the author name.
@@ -88,6 +107,11 @@ It's useful to create short aliases in eshell for commonly run commands.
     "Alias for find-file in eshell."
     (dolist (file args)
       (find-file file)))
+#+end_src
+
+#+begin_src elisp
+  (setenv "PATH" (concat "/opt/homebrew/bin:" (getenv "PATH")))
+  (add-to-list 'exec-path "/opt/homebrew/bin")
 #+end_src
 
 * External Packages

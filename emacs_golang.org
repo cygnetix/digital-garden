@@ -1,5 +1,39 @@
 #+TITLE: Go Emacs Package Config
+#+PROPERTY: header-args :results silent
+
+* Overview
+This is my Go configuration based on [[https://github.com/skybert/skybert-talks/blob/main/emacs-go-setup/emacs-go.org][skybert's config here]] ([[https://www.youtube.com/watch?v=p_xX_vX8M7g][Effective Golang in Emacs]]).
+
+* Keybindings
+
+* Config
+Go needs to be installed, along with gopls and goimports.
+#+begin_src shell
+  install_if_missing() {
+    local cmd=$1 install_cmd="${@:2}"
+    command -v "$cmd" &>/dev/null \
+      && echo "$cmd already installed" \
+      || eval "$install_cmd"
+  }
+
+  install_if_missing go        brew install go
+  install_if_missing gopls     go install golang.org/x/tools/gopls@latest
+  install_if_missing goimports go install golang.org/x/tools/cmd/goimports@latest
+#+end_src
 
 #+begin_src elisp
-  (message "todo")
+  (use-package go-mode
+    :ensure t
+    :hook
+    (go-mode . eglot-ensure)
+    (go-mode . (lambda ()
+  	       (display-line-numbers-mode 1)
+  	       (setq-local tab-width 4)
+                 (setq-local indent-tabs-mode t)
+  	       (setq-local gofmt-command "goimports")
+  	       (local-set-key (kbd "C-c C-c") #'compile)
+                 (add-hook 'before-save-hook #'gofmt-before-save nil t))))
+  :config
+  (setenv "PATH" (concat "~/go/bin:" (getenv "PATH")))
+  (add-to-list 'exec-path "~/go/bin")
 #+end_src
