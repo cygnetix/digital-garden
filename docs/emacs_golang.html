@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-23 Sat 20:55 -->
+<!-- 2026-05-30 Sat 16:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Go Emacs Package Config</title>
@@ -201,9 +201,66 @@
 </div>
 <div id="content" class="content">
 <h1 class="title">Go Emacs Package Config</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgec52f3f">Overview</a></li>
+<li><a href="#org2627565">Keybindings</a></li>
+<li><a href="#org54fac5c">Config</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgec52f3f" class="outline-2">
+<h2 id="orgec52f3f">Overview</h2>
+<div class="outline-text-2" id="text-orgec52f3f">
+<p>
+This is my Go configuration based on <a href="https://github.com/skybert/skybert-talks/blob/main/emacs-go-setup/emacs-go.org">skybert's config here</a> (<a href="https://www.youtube.com/watch?v=p_xX_vX8M7g">Effective Golang in Emacs</a>).
+</p>
+</div>
+</div>
+<div id="outline-container-org2627565" class="outline-2">
+<h2 id="org2627565">Keybindings</h2>
+</div>
+
+<div id="outline-container-org54fac5c" class="outline-2">
+<h2 id="org54fac5c">Config</h2>
+<div class="outline-text-2" id="text-org54fac5c">
+<p>
+Go needs to be installed, along with gopls and goimports.
+</p>
 <div class="org-src-container">
-<pre class="src src-elisp">(message "todo")
+<pre class="src src-shell">install_if_missing() {
+  local cmd=$1 install_cmd="${@:2}"
+  command -v "$cmd" &amp;&gt;/dev/null \
+    &amp;&amp; echo "$cmd already installed" \
+    || eval "$install_cmd"
+}
+
+install_if_missing go        brew install go
+install_if_missing gopls     go install golang.org/x/tools/gopls@latest
+install_if_missing goimports go install golang.org/x/tools/cmd/goimports@latest
 </pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(use-package go-mode
+  :ensure t
+  :hook
+  (go-mode . eglot-ensure)
+  (go-mode . (lambda ()
+               (display-line-numbers-mode 1)
+               (setq-local tab-width 4)
+               (setq-local indent-tabs-mode t)
+               (setq-local gofmt-command "goimports")
+               (local-set-key (kbd "C-c C-c") #'compile)
+               (add-hook 'before-save-hook #'gofmt-before-save nil t))))
+:config
+(setenv "PATH" (concat "~/go/bin:" (getenv "PATH")))
+(add-to-list 'exec-path "~/go/bin")
+</pre>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">

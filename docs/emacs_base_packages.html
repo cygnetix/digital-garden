@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-23 Sat 20:55 -->
+<!-- 2026-05-30 Sat 16:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Base Packages</title>
@@ -255,8 +255,7 @@ I use the built-in <code>modus-vivendi</code> theme as well as removing some of 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(load-theme 'modus-vivendi)
-(set-face-attribute 'default nil :family "Fira Code" :height 150)
+<pre class="src src-elisp">(load-theme 'wombat)
 
 (global-visual-line-mode t)
 (scroll-bar-mode -1)
@@ -264,6 +263,7 @@ I use the built-in <code>modus-vivendi</code> theme as well as removing some of 
 (menu-bar-mode -1)
 
 (setq ring-bell-function 'ignore)
+(add-hook 'emacs-startup-hook #'toggle-frame-maximized)
 </pre>
 </div>
 </div>
@@ -293,6 +293,29 @@ I include a lot of snippets in my Org files. The <code>org-tempo</code> packages
 <pre class="src src-elisp">(require 'org-tempo)
 (add-to-list 'org-structure-template-alist
              '("py" . "src python"))
+</pre>
+</div>
+
+<p>
+Add support for shell commands to be run from org files.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((shell . t)))
+</pre>
+</div>
+
+<p>
+Change the font for org-mode to something a little easier on the eyes.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(add-hook 'org-mode-hook
+          (lambda ()
+            (face-remap-add-relative 'default :family "Fira Code" :height 150)
+            (face-remap-add-relative 'org-code :family "monospace" :height 150)
+            (face-remap-add-relative 'org-block :family "monospace" :height 120)
+            (face-remap-add-relative 'org-verbatim :family "monospace" :height 150)))
 </pre>
 </div>
 
@@ -347,6 +370,12 @@ It's useful to create short aliases in eshell for commonly run commands.
   "Alias for find-file in eshell."
   (dolist (file args)
     (find-file file)))
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(setenv "PATH" (concat "/opt/homebrew/bin:" (getenv "PATH")))
+(add-to-list 'exec-path "/opt/homebrew/bin")
 </pre>
 </div>
 </div>
