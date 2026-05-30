@@ -1,10 +1,14 @@
-#+TITLE: Go Emacs Package Config
+#+TITLE: Emacs Golang Development
 #+PROPERTY: header-args :results silent
 
 * Overview
 This is my Go configuration based on [[https://github.com/skybert/skybert-talks/blob/main/emacs-go-setup/emacs-go.org][skybert's config here]] ([[https://www.youtube.com/watch?v=p_xX_vX8M7g][Effective Golang in Emacs]]).
 
 * Keybindings
+- =C-c C-c= :: Call the =compile= function, which will call ~make -k~ by default.
+- =C-x C-a b= :: Set a breakpoint in the code.
+- =C-x C-a d= :: Start the debugger.
+- =C-x C-a K= :: Stop the current debugging session.
 
 * Config
 Go needs to be installed, along with gopls and goimports.
@@ -21,6 +25,7 @@ Go needs to be installed, along with gopls and goimports.
   install_if_missing goimports go install golang.org/x/tools/cmd/goimports@latest
 #+end_src
 
+When =.go= files are opened, this starts the Go PLS language server to provide syntax highlighting. It also sets up automatically calling go fmt and adding missing imports when the buffere is saved.
 #+begin_src elisp
   (use-package go-mode
     :ensure t
@@ -33,7 +38,14 @@ Go needs to be installed, along with gopls and goimports.
   	       (setq-local gofmt-command "goimports")
   	       (local-set-key (kbd "C-c C-c") #'compile)
                  (add-hook 'before-save-hook #'gofmt-before-save nil t))))
-  :config
+
   (setenv "PATH" (concat "~/go/bin:" (getenv "PATH")))
   (add-to-list 'exec-path "~/go/bin")
+ #+end_src
+
+Dape is the debugger that can be used with the Go Delve (~dlv~) package.
+#+begin_src elisp 
+  (use-package dape
+    :ensure t
+    :after go-mode)
 #+end_src
