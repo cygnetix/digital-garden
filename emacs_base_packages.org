@@ -14,7 +14,6 @@ This is my basic Emacs configuration. It uses only built-in packages and keeps t
 Fido is a built-in modern alternative to the default mini-buffer. This works similar to helm and vertico but is built-in to Emacs.
 
 #+begin_src elisp
-  (fido-mode 1)
   (fido-vertical-mode t)
 #+end_src
 
